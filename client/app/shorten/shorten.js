@@ -8,5 +8,9 @@ angular.module('shortly.shorten', [])
     console.log("called function");
     //post new links to the server
     Links.addLink($scope.link)
+    .then(function(resp){
+      //do something with the response
+      $location.path('/links');
+    })
   };
 });

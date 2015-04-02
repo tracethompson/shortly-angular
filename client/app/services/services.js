@@ -3,12 +3,13 @@ angular.module('shortly.services', [])
 .factory('Links', function ($http) {
   // Your code here
   var getLinks = function(){
+    console.log("entered services getlinks");
     return $http({
       method: 'GET',
-      url: '/api/links',
-      data: links
+      url: '/api/links'
     })
     .then(function(resp) { 
+      console.log(resp);
       return resp.data//?????
     })
   }
@@ -19,8 +20,13 @@ var addLink = function(url){
     url: '/api/links',
     data: url
   })
-  .then(function(resp) {
+  .success(function(resp) {
     console.log(resp);
+    console.log("response url: ",resp.url)
+    console.log("base url: ",resp.base_url);
+  })
+  .catch(function(err) {
+    console.log(err);
   })
 };
 

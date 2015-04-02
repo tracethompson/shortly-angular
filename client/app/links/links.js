@@ -5,7 +5,16 @@ angular.module('shortly.links', [])
   $scope.data = {};
 
   $scope.getLinks = function(){
+    console.log("ran getLinks on load");
     //get all links from the server
-    Link.getLinks($scope.data)
+    Links.getLinks()
+    .then(function(links){
+      console.log(links);
+    })
+    .catch(function(err){
+      console.log(err);
+    })
   };
+
+  $scope.getLinks();
 });
