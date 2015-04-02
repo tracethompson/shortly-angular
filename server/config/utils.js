@@ -5,6 +5,7 @@ var request = require('request'),
 
 module.exports = {
   getUrlTitle: function(url) {
+    console.log("getUrlTitle url: ", url);
     var defer = Q.defer();
     request(url, function(err, res, html) {
       if (err) {
