@@ -4,13 +4,14 @@ angular.module('shortly.shorten', [])
   // Your code here
   $scope.link = {};
 
-  $scope.addLink = function(){
+  $scope.addLink = function(isValid){
     console.log("called function");
     //post new links to the server
-    Links.addLink($scope.link)
-    .then(function(resp){
-      //do something with the response
-      $location.path('/links');
-    })
+    if(isValid){
+      Links.addLink($scope.link)
+      .then(function(resp){
+        $location.path('/links');
+      })
+    }
   };
 });
