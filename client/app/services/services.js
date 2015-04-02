@@ -9,7 +9,6 @@ angular.module('shortly.services', [])
       url: '/api/links'
     })
     .then(function(resp) { 
-      console.log(resp);
       return resp.data//?????
     })
   }
