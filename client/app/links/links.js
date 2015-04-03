@@ -9,13 +9,12 @@ angular.module('shortly.links', [])
     //get all links from the server
     Links.getLinks()
     .then(function(links){
-      $scope.data = links
+      $scope.data.links = links
       console.log($scope.data)
     })
     .catch(function(err){
       console.log(err);
     })
   };
-
   $scope.getLinks();
 });

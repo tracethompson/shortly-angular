@@ -1,13 +1,28 @@
-<div id='links'>
+<div id='container'>
   <!-- Your html here -->
-  <h1>Links</h1>
-  <input id="search" type="text" placeholder="Search links!" ng-model="search">
-
-  <!-- unordered list containing the links that shorten spits out -->
-    <ul class="links">
-      <li ng-repeat="link in data | filter:search">
-        <a href={{link.url}}>{{link.title}}</a>
-        <br>
+  <nav class="navigation">
+    <ul>
+      <li>
+          <a class="selected" href="#/links">Links</a>
+      </li>
+       <li>
+          <a href="#/shorten">Shorten</a>
       </li>
     </ul>
-<a href="#/shorten">Want to shorten a url? <strong>Shorten</strong>...</a>
+  </nav>
+</div>
+<input type='text' ng-model='search' placeholder='filter' />
+<div class="links">
+  <div class="link"
+      ng-repeat="link in data.links | filter:search | orderBy:'created_at'">
+    <img src="assets/redirect_icon.png">
+    <div class="info">
+      <div class="visits">
+        <span class="count">{{ link.visits }}</span>Visits
+      </div>
+      <div class="title">{{ link.title }}</div>
+      <div class="original">{{ link.url }}</div>
+      <a href="http://localhost:8000/api/links/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
+    </div>
+  </div>
+</div>
